@@ -13,11 +13,26 @@ function getComputerChoice(){
 
 function getHumanChoice(){
     let user = prompt('Rock, Paper or Scissors?');
-    return user;
+    return user.toLowerCase();
 }
-
-getHumanChoice();
 
 function playRound(humanChoice, computerChoice){
+    if((computerChoice === 'rock' && humanChoice === 'scissors') ||
+       (computerChoice === 'paper' && humanChoice === 'rock') ||
+       (computerChoice === 'scissors' && humanChoice === 'paper')) {
+        computerScore++;
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}`)
+       } else if ((humanChoice === 'rock' && computerChoice === 'scissors') ||
+                  (humanChoice === 'paper' && computerChoice === 'rock') ||
+                  (humanChoice === 'scissors' && computerChoice === 'paper')) {
+                    humanScore++;
+                    console.log(`You win! ${humanChoice} beats ${computerChoice}`)
+                  } else if (computerChoice === humanChoice) {
+                    console.log('Tie Game!');
+                  }
+}
+
+function playGame(){
     
 }
+
