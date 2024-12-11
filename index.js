@@ -1,6 +1,3 @@
-let humanScore = 0;
-let computerScore = 0;
-
 function getComputerChoice(){
     let randomNum = Math.random();
     
@@ -16,23 +13,32 @@ function getHumanChoice(){
     return user.toLowerCase();
 }
 
-function playRound(humanChoice, computerChoice){
-    if((computerChoice === 'rock' && humanChoice === 'scissors') ||
-       (computerChoice === 'paper' && humanChoice === 'rock') ||
-       (computerChoice === 'scissors' && humanChoice === 'paper')) {
-        computerScore++;
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}`)
-       } else if ((humanChoice === 'rock' && computerChoice === 'scissors') ||
-                  (humanChoice === 'paper' && computerChoice === 'rock') ||
-                  (humanChoice === 'scissors' && computerChoice === 'paper')) {
-                    humanScore++;
-                    console.log(`You win! ${humanChoice} beats ${computerChoice}`)
-                  } else if (computerChoice === humanChoice) {
-                    console.log('Tie Game!');
-                  }
+function playGame(){
+    let humanScore = 0;
+    let computerScore = 0;
+    function playRound(humanChoice, computerChoice){
+        if((computerChoice === 'rock' && humanChoice === 'scissors') ||
+           (computerChoice === 'paper' && humanChoice === 'rock') ||
+           (computerChoice === 'scissors' && humanChoice === 'paper')) {
+            computerScore++;
+            console.log(`You lose! ${computerChoice} beats ${humanChoice}`)
+           } else if ((humanChoice === 'rock' && computerChoice === 'scissors') ||
+                      (humanChoice === 'paper' && computerChoice === 'rock') ||
+                      (humanChoice === 'scissors' && computerChoice === 'paper')) {
+                        humanScore++;
+                        console.log(`You win! ${humanChoice} beats ${computerChoice}`)
+                      } else if (computerChoice === humanChoice) {
+                        console.log('Tie Game!');
+                      }
+    }
+
+    for(let i = 0; i < 5; i++) {
+        const humanChoice = getHumanChoice();
+        const computerChoice = getComputerChoice();
+
+        playRound(humanChoice, computerChoice);
+    }
 }
 
-function playGame(){
-    
-}
+playGame();
 
