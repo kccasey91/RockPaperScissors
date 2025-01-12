@@ -12,12 +12,14 @@ buttons.forEach(button => {
       if(roundCounter < maxRounds) {
         const cpuChoice = getCpuChoice();
         playRound(button.id, cpuChoice);
+        roundCounter++;
 
         if (roundCounter === maxRounds) {
           displayResults();
           disableButtons(buttons);
   
     }
+  }
     });
 });
 
@@ -45,8 +47,18 @@ function playRound(humanChoice, computerChoice){
                 }
 }
 
+function disableButtons(buttons) {
+  buttons.forEach(button => button.disabled = true);
+}
+
 function displayResults(){
-  
+  let results = document.querySelector('.display-text');
+
+  if(humanScore > cpuScore){
+    results.textContent = 'PLAYER WINS!';
+  } else if(cpuScore > humanScore){
+    results.textContent = 'COMPUTER WINS!';
+  } else results.textContent = 'TIE GAME!';
 }
 
 
